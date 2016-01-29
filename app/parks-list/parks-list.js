@@ -1,25 +1,44 @@
 import React from 'react';
-import List from 'material-ui/lib/lists/list';
-import ListItem from 'material-ui/lib/lists/list-item';
 import {_} from 'underscore';
 
+import ParksListItem from './parks-list__item';
 import {httpService} from '../core/api';
+import {filter} from '../core/filter';
+import {eventManager} from '../core/event-manager';
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {data: []};
+        // Set initial state
+        this.state = {
+            data: [],
+            soryBy: 'alpha',
+            sortAsc: true,
+            searchQuery: ''
+        };
+
+        this.handleSearch = this.handleSearch.bind(this);
+
     }
 
     getParksData() {
         httpService.get('data/national-parks.json', (data) => {
-            data = _.sortBy (data, 'State');
+            if (this.state.searchQuery !== '') {
+                data = filter.filter(data, ['Name', 'State'], this.state.searchQuery);
+            }
+            data = filter.sortBy(data, 'State');
             data = _.groupBy(data, 'State');
             this.setState({data: data})
         });
     }
 
+    handleSearch(query) {
+        this.setState({searchQuery: query});
+        this.getParksData();
+    }
+
     componentDidMount() {
+        eventManager.subscribe('searchUpdate', this.handleSearch);
         this.getParksData();
     }
 
@@ -27,27 +46,17 @@ export default class App extends React.Component {
         var parks = Object.keys(this.state.data).map(
             (key) => {
                 var stateName = key;
-                console.log(key, this.state.data[key]);
                 var parks = this.state.data[key].map(park => {
                     return (
-                        <ListItem
-                            className="parks-list__item"
-                            primaryText="{park.Name}"
-                        />
+                        <ParksListItem label={park.Name} />
                     )
                 });
-                return (
-                    <ListItem
-                        className="parks-list__item"
-                        primaryText={stateName}
-                        nestedItems={parks}
-                    />
-                )
+                return <ParksListItem label={stateName} childItems={parks} />;
             });
         return (
-            <List className="parks-list">
+            <ul className="parks-list">
                 {parks}
-            </List>
+            </ul>
         )
     }
 }
