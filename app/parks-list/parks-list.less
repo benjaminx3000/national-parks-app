@@ -26,8 +26,9 @@
 
 .parks-list__label {
     padding: @gutter-lg;
+    transition: background-color @transition-speed-fast;
     &:hover {
-        background-color: @gray-alpha-light;
+        background-color: fade(@gray-alpha-light, 5%);
     }
     &:focus {
         outline: none;

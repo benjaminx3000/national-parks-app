@@ -12,7 +12,7 @@ export default class App extends React.Component {
         // Set initial state
         this.state = {
             data: [],
-            soryBy: 'State',
+            sortBy: 'State',
             sortAsc: true,
             searchQuery: ''
         };
@@ -26,8 +26,9 @@ export default class App extends React.Component {
             if (this.state.searchQuery !== '') {
                 data = filter.filter(data, ['Name', 'State'], this.state.searchQuery);
             }
-            data = filter.sortBy(data, this.state.sortBy);
+            data = filter.sortBy(data, this.state.sortBy, this.state.sortAsc);
             data = _.groupBy(data, this.state.sortBy);
+            console.log(data);
             this.setState({data: data})
         });
     }

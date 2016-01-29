@@ -353,6 +353,22 @@ td,
 th {
   padding: 0;
 }
+.parks-search {
+  box-sizing: border-box;
+  padding: 15px;
+}
+.parks-search__input {
+  box-sizing: border-box !important;
+  display: block;
+  width: 100%;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.6);
+  padding: 15px;
+  transition: border-color 0.5s;
+}
+.parks-search__input:focus {
+  outline: none;
+}
 .parks-list {
   margin: 0 0 19.95px;
   padding: 0;
@@ -379,32 +395,13 @@ th {
 }
 .parks-list__label {
   padding: 19.95px;
+  transition: background-color 0.25s;
 }
 .parks-list__label:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 .parks-list__label:focus {
   outline: none;
   color: white;
   background-color: #769047;
-}
-.parks-search {
-  box-sizing: border-box;
-  padding: 15px;
-}
-.parks-search__input {
-  box-sizing: border-box !important;
-  display: block;
-  width: 100%;
-  font-size: 18px;
-  color: rgba(0, 0, 0, 0.6);
-  padding: 15px;
-  transition: padding 0.5s;
-}
-.parks-search__input:focus {
-  outline: none;
-  padding: 19.95px 15px;
-}
-.parks-search__input.is-active {
-  border: solid 1px #769047;
 }

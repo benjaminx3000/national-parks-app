@@ -19,12 +19,10 @@ function HttpService() {
     return service;
     // TODO: return a promise
     function get(url, callback) {
-        console.log('Getting ', url);
         var xhr = new XMLHttpRequest()
 
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
-                console.log('success', JSON.parse(xhr.responseText));
                 callback(JSON.parse(xhr.responseText));
             }
         }
