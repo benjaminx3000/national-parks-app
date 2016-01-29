@@ -31,5 +31,5 @@ function less() {
 }
 
 function watch() {
-    gulp.watch(['src/**/*.less'], ['less']);
+    gulp.watch(['app/**/*.less'], ['less']);
 }
