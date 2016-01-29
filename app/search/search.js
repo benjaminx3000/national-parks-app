@@ -40,6 +40,7 @@ export default class Search extends React.Component {
             <div className="parks-search">
                 <input
                     type="search"
+                    placeholder="Search..."
                     className={`parks-search__input ${(this.state.isActive) ? 'is-active': 'not-active'}`}
                     value={this.props.searchQuery}
                     onFocus={this.handleFocus}
