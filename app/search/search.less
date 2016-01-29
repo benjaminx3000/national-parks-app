@@ -1,0 +1,25 @@
+.parks-search {
+    box-sizing: border-box;
+    padding: @gutter-base;
+}
+
+.parks-search__input {
+    box-sizing: border-box !important;
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    color: @gray-alpha-dark;
+    padding: @gutter-lg;
+    transition: padding @transition-speed-base;
+    &:focus {
+        outline: none;
+        padding: (@gutter-lg * 1.33) @gutter-lg;
+    }
+    &.is-active {
+        border: solid 1px @color-primary-dark;
+    }
+}
+
+.parks-search__icon {
+
+}
