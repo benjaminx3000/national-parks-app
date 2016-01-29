@@ -12,7 +12,7 @@ export default class App extends React.Component {
         // Set initial state
         this.state = {
             data: [],
-            soryBy: 'alpha',
+            soryBy: 'State',
             sortAsc: true,
             searchQuery: ''
         };
@@ -26,8 +26,8 @@ export default class App extends React.Component {
             if (this.state.searchQuery !== '') {
                 data = filter.filter(data, ['Name', 'State'], this.state.searchQuery);
             }
-            data = filter.sortBy(data, 'State');
-            data = _.groupBy(data, 'State');
+            data = filter.sortBy(data, this.state.sortBy);
+            data = _.groupBy(data, this.state.sortBy);
             this.setState({data: data})
         });
     }
@@ -54,7 +54,8 @@ export default class App extends React.Component {
                 return <ParksListItem label={stateName} childItems={parks} />;
             });
         return (
-            <ul className="parks-list">
+
+            <ul className={`parks-list ${(this.state.searchQuery !== '') ? 'is-filtered': ''}`} >
                 {parks}
             </ul>
         )

@@ -1,0 +1,37 @@
+.parks-list {
+    margin: 0 0 @gutter-lg;
+    padding: 0;
+    transition: max-height @transition-speed-fast;
+    & & {
+        margin-bottom: 0;
+        overflow-y: hidden;
+        max-height: 0;
+    }
+    &.is-filtered &,
+    .parks-list__label:focus + & {
+        display: block !important;
+        max-height: 500px;
+        overflow-y: auto;
+    }
+}
+
+.parks-list__item {
+    font-size: 16px;
+    margin: 0;
+    list-style-type: none;
+    & & {
+        background-color: @gray-alpha-light;
+    }
+}
+
+.parks-list__label {
+    padding: @gutter-lg;
+    &:hover {
+        background-color: @gray-alpha-light;
+    }
+    &:focus {
+        outline: none;
+        color: white;
+        background-color: @color-primary-light;
+    }
+}
