@@ -1,0 +1,22 @@
+{
+  "name": "national-parks-app",
+  "description": "readme.md",
+  "main": "app/main",
+  "authors": [
+    "Ben Liesch <ben.liesch@7summitsagency.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-css": "^3.0.3"
+  }
+}
