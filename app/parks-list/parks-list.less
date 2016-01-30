@@ -8,7 +8,7 @@
         max-height: 0;
     }
     &.is-filtered &,
-    .parks-list__label:focus + & {
+    .parks-list__label.is-active + & {
         display: block !important;
         max-height: 500px;
         overflow-y: auto;
@@ -31,6 +31,9 @@
         background-color: fade(@gray-alpha-light, 5%);
     }
     &:focus {
+        outline: none;
+    }
+    &.is-active{
         outline: none;
         color: white;
         background-color: @color-primary-light;

@@ -353,22 +353,6 @@ td,
 th {
   padding: 0;
 }
-.parks-search {
-  box-sizing: border-box;
-  padding: 15px;
-}
-.parks-search__input {
-  box-sizing: border-box !important;
-  display: block;
-  width: 100%;
-  font-size: 18px;
-  color: rgba(0, 0, 0, 0.6);
-  padding: 15px;
-  transition: border-color 0.5s;
-}
-.parks-search__input:focus {
-  outline: none;
-}
 .parks-list {
   margin: 0 0 19.95px;
   padding: 0;
@@ -380,7 +364,7 @@ th {
   max-height: 0;
 }
 .parks-list.is-filtered .parks-list,
-.parks-list__label:focus + .parks-list {
+.parks-list__label.is-active + .parks-list {
   display: block !important;
   max-height: 500px;
   overflow-y: auto;
@@ -402,6 +386,25 @@ th {
 }
 .parks-list__label:focus {
   outline: none;
+}
+.parks-list__label.is-active {
+  outline: none;
   color: white;
   background-color: #769047;
+}
+.parks-search {
+  box-sizing: border-box;
+  padding: 15px;
+}
+.parks-search__input {
+  box-sizing: border-box !important;
+  display: block;
+  width: 100%;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.6);
+  padding: 15px;
+  transition: border-color 0.5s;
+}
+.parks-search__input:focus {
+  outline: none;
 }

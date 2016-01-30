@@ -3,19 +3,20 @@ export default class ParksListItem extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            label: "Default Text"
+            label: "Default Text",
+            isActive: false
         }
-        this.handleSelect = this.handleSelect.bind(null, this.props);
+        this.handleSelect = this.handleSelect.bind(this);
     }
 
-    handleSelect(evt) {
-        console.log('select', evt);
+    handleSelect() {
+        this.setState({isActive: !this.state.isActive});
     }
 
     render() {
         return (
             <li className="parks-list__item">
-                <div className="parks-list__label" tabIndex="-1" onClick={this.handleSelect}>{this.props.label}</div>
+                <div className={`parks-list__label ${this.state.isActive? 'is-active' : ''}`} tabIndex="-1" onClick={this.handleSelect}>{this.props.label}</div>
                 <ul className="parks-list">{this.props.childItems}</ul>
             </li>
         );

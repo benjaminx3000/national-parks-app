@@ -25,8 +25,10 @@ export default class App extends React.Component {
         httpService.get('data/national-parks.json', (data) => {
             if (this.state.searchQuery !== '') {
                 data = filter.filter(data, ['Name', 'State'], this.state.searchQuery);
+                data = filter.sortBy(data, 'relevance', this.state.sortAsc);
+            } else {
+                data = filter.sortBy(data, this.state.sortBy, this.state.sortAsc);
             }
-            data = filter.sortBy(data, this.state.sortBy, this.state.sortAsc);
             data = _.groupBy(data, this.state.sortBy);
             console.log(data);
             this.setState({data: data})

@@ -21,7 +21,10 @@ function Filter() {
     *   the returned array will contain matches for each word.
     */
     function filter(collection, properties, query) {
-        query = query.split(' ');
+        // Spliting the query and joining it with the
+        // oiginal query creates a fuzzy search, returning
+        // both the full string match and the individual tokesn
+        query = _.union([query],query.split(' '));
         collection = _.filter(collection, (predicate) => {
             var match = false,
                 matchProps = (properties !== null) ?
@@ -31,6 +34,8 @@ function Filter() {
             query.forEach(term => {
                 matchProps.forEach(key => {
                     if (predicate[key].toString().toLowerCase().indexOf(term.toLowerCase()) !== -1) {
+                        predicate.relevance = term.length;
+                        console.log(predicate);
                         match = true;
                     }
                 });
