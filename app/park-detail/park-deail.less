@@ -1,0 +1,20 @@
+.park-detail-content {
+    padding: @gutter-base @gutter-lg;
+}
+
+.park-detail {
+    overflow: hidden;
+    margin: @gutter-base;
+}
+
+.park-detail__header:extend(.park-detail-content) {
+    background-color: @color-tertiary-dark;
+    color: @text-color-inverse;
+}
+
+.park-detail__body:extend(.park-detail-content) {
+    min-height: 250px;
+}
+
+.park-detail__footer:extend(.park-detail-content) {
+}

@@ -12,7 +12,6 @@ function EventManager() {
 
     /////////////////
 
-
     function publish(event, data) {
         var queue = service.queue[event];
 

@@ -353,6 +353,31 @@ td,
 th {
   padding: 0;
 }
+.u-detail-list {
+  margin: 0;
+  padding: 0;
+}
+.u-detail-list > li {
+  display: block;
+  padding: 4.95px 4.95px 15px;
+}
+.park-detail-content,
+.park-detail__header,
+.park-detail__body,
+.park-detail__footer {
+  padding: 15px 19.95px;
+}
+.park-detail {
+  overflow: hidden;
+  margin: 15px;
+}
+.park-detail__header {
+  background-color: #8C5D1D;
+  color: #fff;
+}
+.park-detail__body {
+  min-height: 250px;
+}
 .parks-list {
   margin: 0 0 19.95px;
   padding: 0;
@@ -390,7 +415,7 @@ th {
 .parks-list__label.is-active {
   outline: none;
   color: white;
-  background-color: #769047;
+  background-color: #B8D880;
 }
 .parks-search {
   box-sizing: border-box;

@@ -6,6 +6,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import AppBar from 'material-ui/lib/app-bar';
 import Search from './search/search';
 import ParksList from './parks-list/parks-list';
+import ParkDetail from './park-detail/park-detail';
 
 injectTapEventPlugin();
 
@@ -15,6 +16,7 @@ ReactDom.render(
             <AppBar title="National Parks" className="np-header"/>
             <Search />
             <ParksList />
+            <ParkDetail />
         </div>
     ),
     document.querySelector('#NationalParksApp')
