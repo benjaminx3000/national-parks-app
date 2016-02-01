@@ -354,23 +354,77 @@ th {
   padding: 0;
 }
 .u-detail-list {
-  width: 100px;
   margin: 0;
   padding: 0;
+  width: 100%;
+  overflow: auto;
 }
 .u-detail-list > dt,
 .u-detail-list dd {
+  box-sizing: border-box;
   margin: 0;
   padding: 4.95px 4.95px 15px;
   float: left;
+  width: auto;
 }
 .u-detail-list > dt {
   color: rgba(0, 0, 0, 0.6);
-  width: 45%;
+  width: 35%;
   clear: left;
 }
 .u-detail-list > dd {
+  width: 65%;
   font-weight: bold;
+}
+.u-detail-list:after {
+  clear: left;
+}
+.park-detail-content,
+.park-detail__header,
+.park-detail__body,
+.park-detail__footer {
+  padding: 15px 19.95px;
+}
+.park-detail {
+  overflow: hidden;
+  margin: 15px;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.is-active .park-detail {
+  opacity: 1;
+}
+.park-detail__background {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.park-detail__background.is-active {
+  opacity: 1;
+  display: flex;
+}
+.park-detail__header {
+  background-color: #8C5D1D;
+  color: rgba(0, 0, 0, 0.6);
+}
+.park-detail__header,
+.park-detail__header h1 {
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 24px;
+  font-weight: normal;
+}
+.park-detail__body {
+  /* display: flex; */
+  /* align-items: center; */
 }
 .parks-list {
   margin: 0 0 19.95px;
@@ -408,7 +462,7 @@ th {
 }
 .parks-list__label.is-active {
   outline: none;
-  color: white;
+  color: rgba(0, 0, 0, 0.6);
   background-color: #769047;
 }
 .parks-list__item .parks-list__item .parks-list__label.is-active {
@@ -429,29 +483,4 @@ th {
 }
 .parks-search__input:focus {
   outline: none;
-}
-.park-detail-content,
-.park-detail__header,
-.park-detail__body,
-.park-detail__footer {
-  padding: 15px 19.95px;
-}
-.park-detail {
-  overflow: hidden;
-  margin: 15px;
-}
-.park-detail__header {
-  background-color: #8C5D1D;
-  color: #fff;
-}
-.park-detail__header,
-.park-detail__header h1 {
-  margin: 0;
-  font-size: 24px;
-  font-weight: normal;
-}
-.park-detail__body {
-  min-height: 250px;
-  display: flex;
-  align-items: center;
 }

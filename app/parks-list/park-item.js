@@ -8,7 +8,7 @@ export default class ParkItem extends ParksListItem {
 
     handleSelect() {
         super.handleSelect();
-        console.log(this.props.data);
+        eventManager.publish('parkSelect', this.props.data);
         eventManager.publish('parkDeSelect');
         eventManager.subscribe('parkDeSelect', this.deSelect);
     }

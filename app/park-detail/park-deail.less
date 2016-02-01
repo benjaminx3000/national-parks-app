@@ -5,13 +5,37 @@
 .park-detail {
     overflow: hidden;
     margin: @gutter-base;
+    width: 100%;
+    opacity: 0;
+    transition: opacity @transition-speed-base;
+    .is-active & {
+        opacity: 1;
+    }
+}
+
+.park-detail__background {
+    background-color: @gray-alpha;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    opacity: 0;
+    transition: opacity @transition-speed-base;
+    &.is-active {
+        opacity: 1;
+        display: flex;
+    }
 }
 
 .park-detail__header:extend(.park-detail-content) {
     background-color: @color-tertiary-dark;
-    color: @text-color-inverse;
+    color: @text-color-base;
     &,
     h1 {
+        text-transform: uppercase;
         margin: 0;
         font-size: 24px;
         font-weight: normal;
@@ -19,9 +43,8 @@
 }
 
 .park-detail__body:extend(.park-detail-content) {
-    min-height: 250px;
-    display: flex;
-    align-items: center;
+    /* display: flex; */
+    /* align-items: center; */
 }
 
 .park-detail__footer:extend(.park-detail-content) {

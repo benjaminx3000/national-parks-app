@@ -13,7 +13,7 @@ injectTapEventPlugin();
 ReactDom.render(
     (
         <div className="national-parks-app">
-            <AppBar title="National Parks" className="np-header"/>
+            <AppBar title="National Parks" className="np-header" backgroundColor="#D97E00"/>
             <Search />
             <ParksList />
             <ParkDetail />
