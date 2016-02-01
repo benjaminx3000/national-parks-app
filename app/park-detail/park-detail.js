@@ -5,22 +5,18 @@ export default class ParkDetail extends React.Component {
     constructor(props) {
         super(props);
 
-        //set initial state
-        this.sate = {
-            data: {}
-        }
     }
 
     render() {
         return (
             <Paper className="park-detail">
-                <header className="park-detail__header">Park Name</header>
+                <header className="park-detail__header">
+                    <h1>Park Name</h1>
+                </header>
                 <div className="park-detail__body">
-                    <ul className="park-detail__meta u-detail-list">
-                        <li>Blah: foo</li>
-                        <li>Blah: foo</li>
-                        <li>Blah: foo</li>
-                    </ul>
+                    <dl className="park-detail__meta u-detail-list">
+                        <dt>Established:</dt>
+                    </dl>
                 </div>
                 <footer className="park-detail__footer"></footer>
             </Paper>

@@ -1,24 +1,33 @@
 import React from 'react';
+import {eventManager} from '../core/event-manager';
+import ListItem from './list-item';
+
 export default class ParksListItem extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            label: "Default Text",
             isActive: false
         }
         this.handleSelect = this.handleSelect.bind(this);
+        this.deSelect = this.deSelect.bind(this);
     }
 
     handleSelect() {
         this.setState({isActive: !this.state.isActive});
     }
 
+    deSelect() {
+        this.setState({isActive: false});
+    }
+
     render() {
         return (
-            <li className="parks-list__item">
-                <div className={`parks-list__label ${this.state.isActive? 'is-active' : ''}`} tabIndex="-1" onClick={this.handleSelect}>{this.props.label}</div>
-                <ul className="parks-list">{this.props.childItems}</ul>
-            </li>
+            <ListItem
+                label={this.props.label}
+                children={this.props.children}
+                isActive={this.state.isActive}
+                handleSelect={this.handleSelect}
+            />
         );
     }
 }

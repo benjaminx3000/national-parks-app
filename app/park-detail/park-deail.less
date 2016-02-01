@@ -10,10 +10,18 @@
 .park-detail__header:extend(.park-detail-content) {
     background-color: @color-tertiary-dark;
     color: @text-color-inverse;
+    &,
+    h1 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: normal;
+    }
 }
 
 .park-detail__body:extend(.park-detail-content) {
     min-height: 250px;
+    display: flex;
+    align-items: center;
 }
 
 .park-detail__footer:extend(.park-detail-content) {

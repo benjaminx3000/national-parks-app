@@ -36,6 +36,9 @@
     &.is-active{
         outline: none;
         color: white;
-        background-color: @color-primary;
+        background-color: @color-primary-dark;
+    }
+    .parks-list__item .parks-list__item &.is-active {
+        background-color: darken(@color-primary-dark, 10%);
     }
 }

@@ -1,8 +1,19 @@
 .u-detail-list {
+    width: 100px;
     margin: 0;
     padding: 0;
-    > li {
-        display: block;
+    > dt, dd {
+        margin: 0;
         padding: @gutter-sm @gutter-sm @gutter-base;
+        float: left;
     }
+    > dt {
+        color: @gray-alpha-dark;
+        width: 45%;
+        clear: left;
+    }
+    > dd {
+        font-weight: bold;
+    }
+
 }
