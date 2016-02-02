@@ -14,9 +14,8 @@ export default class App extends React.Component {
         this.state = {
             data: [],
             filteredData: [],
-            sortBy: 'State',
             sortAsc: true,
-            searchQuery: ''
+            searching: false
         };
 
         this.handleSearch = this.handleSearch.bind(this);
@@ -31,21 +30,22 @@ export default class App extends React.Component {
         });
     }
 
-    filterData() {
+    filterData(query) {
         var data = this.state.data;
-        if (this.state.searchQuery !== '') {
-            data = filter.filter(data, ['Name', 'State'], this.state.searchQuery);
+        if (query) {
+            this.setState({searching: true})
+            data = filter.filter(data, ['Name', 'State'], query);
             data = filter.sortBy(data, 'relevance', this.state.sortAsc);
         } else {
-            data = filter.sortBy(data, this.state.sortBy, this.state.sortAsc);
+            this.setState({searching: false});
+            data = filter.sortBy(data, 'State', this.state.sortAsc);
         }
-        data = _.groupBy(data, this.state.sortBy);
+        data = _.groupBy(data, 'State');
         this.setState({filteredData: data});
     }
 
     handleSearch(query) {
-        this.setState({searchQuery: query});
-        this.filterData();
+        this.filterData(query.trim());
     }
 
     componentDidMount() {
@@ -65,7 +65,7 @@ export default class App extends React.Component {
                 return <StateItem label={stateName} children={parks} />;
             });
         return (
-            <ul className={`parks-list ${(this.state.searchQuery !== '') ? 'is-filtered': ''}`} >
+            <ul className={`parks-list ${(this.state.searching) ? 'is-filtered': ''}`} >
                 {parks}
             </ul>
         )

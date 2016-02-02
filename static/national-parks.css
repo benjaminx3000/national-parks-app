@@ -379,6 +379,19 @@ th {
 .u-detail-list:after {
   clear: left;
 }
+.np-footer {
+  padding: 15px 19.95px;
+}
+/*
+* because  material ui elements such as the AppBar are styled via
+* inline styles, !importants are neccisary
+*/
+.np-header {
+  background-color: #769047 !important;
+}
+.np-header h1 {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
 @media (min-width: 43em) {
   .national-parks-app .parks-list-container {
     background-color: #fff;
@@ -394,16 +407,6 @@ th {
 }
 body {
   background-color: rgba(0, 0, 0, 0.1);
-}
-/*
-* because  material ui elements such as the AppBar are styled via
-* inline styles, !importants are neccisary
-*/
-.np-header {
-  background-color: #769047 !important;
-}
-.np-header h1 {
-  color: rgba(0, 0, 0, 0.6) !important;
 }
 .park-detail-content,
 .park-detail__header,

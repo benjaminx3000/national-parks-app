@@ -1,8 +1,10 @@
+
 var gulp = require('gulp');
 
 gulp.task('less', less);
+gulp.task('serve', serve);
 gulp.task('watch', watch);
-gulp.task('default', ['less', 'watch']);
+gulp.task('default', ['less', 'serve','watch']);
 
 function onError(err) {
 	var notify = require('gulp-notify');
@@ -16,6 +18,11 @@ function onError(err) {
 	this.emit('end');
 }
 
+function build() {
+	// TODO: integrate JSPM bundling to task
+}
+
+
 function less() {
     var less = require('gulp-less'),
         plumber = require('gulp-plumber'),
@@ -28,6 +35,19 @@ function less() {
         .pipe(less({paths: ['bower_components']}))
         .pipe(rename('national-parks.css'))
         .pipe(gulp.dest('static'));
+}
+
+
+
+
+function serve() {
+	var connect = require('gulp-connect');
+
+    connect.server({
+        root: './',
+        port: '3000',
+        livereload: true
+    });
 }
 
 function watch() {
