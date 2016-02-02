@@ -13,6 +13,7 @@ export default class App extends React.Component {
         // Set initial state
         this.state = {
             data: [],
+            filteredData: [],
             sortBy: 'State',
             sortAsc: true,
             searchQuery: ''
@@ -25,24 +26,26 @@ export default class App extends React.Component {
     getParksData() {
         // TODO: migrate data set to mongodb to avoid unique key error
         httpService.get('data/national-parks.json', (data) => {
-            if (this.state.searchQuery !== '') {
-                data = filter.filter(data, ['Name', 'State'], this.state.searchQuery);
-                data = filter.sortBy(data, 'relevance', this.state.sortAsc);
-            } else {
-                data = filter.sortBy(data, this.state.sortBy, this.state.sortAsc);
-            }
-            data = _.groupBy(data, this.state.sortBy);
             this.setState({data: data});
+            this.filterData();
         });
     }
 
     filterData() {
-
+        var data = this.state.data;
+        if (this.state.searchQuery !== '') {
+            data = filter.filter(data, ['Name', 'State'], this.state.searchQuery);
+            data = filter.sortBy(data, 'relevance', this.state.sortAsc);
+        } else {
+            data = filter.sortBy(data, this.state.sortBy, this.state.sortAsc);
+        }
+        data = _.groupBy(data, this.state.sortBy);
+        this.setState({filteredData: data});
     }
 
     handleSearch(query) {
         this.setState({searchQuery: query});
-        this.getParksData();
+        this.filterData();
     }
 
     componentDidMount() {
@@ -51,11 +54,10 @@ export default class App extends React.Component {
     }
 
     render() {
-        var parks = Object.keys(this.state.data).map(
+        var parks = Object.keys(this.state.filteredData).map(
             (key) => {
                 var stateName = key;
-                var parks = this.state.data[key];
-                var parks = this.state.data[key].map(park => {
+                var parks = this.state.filteredData[key].map(park => {
                     return (
                         <ParkItem label={park.Name} data={park}/>
                     )
