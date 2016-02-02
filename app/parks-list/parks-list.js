@@ -23,6 +23,7 @@ export default class App extends React.Component {
     }
 
     getParksData() {
+        // TODO: migrate data set to mongodb to avoid unique key error
         httpService.get('data/national-parks.json', (data) => {
             if (this.state.searchQuery !== '') {
                 data = filter.filter(data, ['Name', 'State'], this.state.searchQuery);
@@ -32,9 +33,11 @@ export default class App extends React.Component {
             }
             data = _.groupBy(data, this.state.sortBy);
             this.setState({data: data});
-            console.log(this.state.data);
-
         });
+    }
+
+    filterData() {
+
     }
 
     handleSearch(query) {

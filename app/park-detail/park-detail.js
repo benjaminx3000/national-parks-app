@@ -21,11 +21,10 @@ export default class ParkDetail extends React.Component {
     }
 
     show(data) {
-        console.log(data);
         this.setState({
             isActive: true,
             name: data.Name,
-            est: data.Est_Year,
+            est: `${data.Est_Day}, ${data.Est_Year}`,
             sq_km: data.Sq_km,
             elevation: `${data.Minelev_ft}' - ${data.Maxelev_ft}'`,
             npsUrl: data.NPS_URL
@@ -44,11 +43,12 @@ export default class ParkDetail extends React.Component {
 
     render() {
         return (
-            <div className={`park-detail__background ${this.state.isActive? 'is-active' : ''}`}>
-                <Paper className="park-detail">
+            <div className={`park-detail ${this.state.isActive? 'is-active' : ''}`}>
+                <div className="park-detail__background"></div>
+                <Paper className="park-detail__card">
                     <header className="park-detail__header">
                         <h1>
-                            <span clasName="btn" onClick={this.hide}>&times;</span>
+                            <span className="park-detail__closer" onClick={this.hide}>&times;</span>
                             {this.state.name}
                         </h1>
                     </header>
@@ -65,6 +65,7 @@ export default class ParkDetail extends React.Component {
                             {/*
                                 TODO: look into additional data from nps
                                 http://www.nps.gov/zion/nps-alerts-zion.json
+                                TODO: add google maps link using lat long attrs
                             */}
                             <RaisedButton
                                 linkButton={true}

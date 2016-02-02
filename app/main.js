@@ -1,3 +1,5 @@
+// TODO: integrate routing for a stateful application.
+
 'use strict';
 import React from 'react';
 import ReactDom from 'react-dom';
@@ -13,10 +15,19 @@ injectTapEventPlugin();
 ReactDom.render(
     (
         <div className="national-parks-app">
-            <AppBar title="National Parks" className="np-header" backgroundColor="#D97E00"/>
-            <Search />
-            <ParksList />
-            <ParkDetail />
+            <AppBar
+                title="National Parks"
+                className="np-header"
+                iconElementLeft={<span/>}
+                backgroundColor="#D97E00"
+            />
+            <div className="park-detail-container">
+                <ParkDetail />
+            </div>
+            <div className="parks-list-container">
+                <Search />
+                <ParksList />
+            </div>
         </div>
     ),
     document.querySelector('#NationalParksApp')

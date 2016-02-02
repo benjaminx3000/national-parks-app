@@ -35,7 +35,6 @@ function Filter() {
                 matchProps.forEach(key => {
                     if (predicate[key].toString().toLowerCase().indexOf(term.toLowerCase()) !== -1) {
                         predicate.relevance = term.length;
-                        console.log(predicate);
                         match = true;
                     }
                 });

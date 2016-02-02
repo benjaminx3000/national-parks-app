@@ -1,0 +1,21 @@
+.national-parks-app {
+    @media (min-width: 43em) {
+
+        .parks-list-container {
+            background-color: #fff;
+            right: auto;
+            width: 33.33%;
+            margin: @gutter-base;
+            box-shadow: 1px 3px 3px @gray-alpha;
+        }
+
+        .park-detail {
+            left: auto;
+            width: ~'calc(66.66% - @{gutter-base} * 2)';
+        }
+    }
+}
+
+body {
+    background-color: @gray-alpha-light;
+}

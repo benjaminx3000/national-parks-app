@@ -379,6 +379,32 @@ th {
 .u-detail-list:after {
   clear: left;
 }
+@media (min-width: 43em) {
+  .national-parks-app .parks-list-container {
+    background-color: #fff;
+    right: auto;
+    width: 33.33%;
+    margin: 15px;
+    box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.3);
+  }
+  .national-parks-app .park-detail {
+    left: auto;
+    width: calc(66.66% - 15px * 2);
+  }
+}
+body {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+/*
+* because  material ui elements such as the AppBar are styled via
+* inline styles, !importants are neccisary
+*/
+.np-header {
+  background-color: #769047 !important;
+}
+.np-header h1 {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
 .park-detail-content,
 .park-detail__header,
 .park-detail__body,
@@ -386,14 +412,34 @@ th {
   padding: 15px 19.95px;
 }
 .park-detail {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+}
+.park-detail.is-active {
+  display: flex;
+}
+.park-detail__card {
   overflow: hidden;
+  position: relative;
+  z-index: 100;
   margin: 15px;
   width: 100%;
   opacity: 0;
   transition: opacity 0.5s;
 }
-.is-active .park-detail {
+.park-detail.is-active .park-detail__card {
   opacity: 1;
+}
+.park-detail__closer {
+  cursor: pointer;
+  display: inline-block;
+  transform: scale(1.45);
+  margin-right: 0.3em;
 }
 .park-detail__background {
   background-color: rgba(0, 0, 0, 0.3);
@@ -402,14 +448,11 @@ th {
   right: 0;
   bottom: 0;
   left: 0;
-  display: none;
-  align-items: center;
   opacity: 0;
   transition: opacity 0.5s;
 }
-.park-detail__background.is-active {
+.park-detail.is-active .park-detail__background {
   opacity: 1;
-  display: flex;
 }
 .park-detail__header {
   background-color: #8C5D1D;
@@ -421,10 +464,6 @@ th {
   margin: 0;
   font-size: 24px;
   font-weight: normal;
-}
-.park-detail__body {
-  /* display: flex; */
-  /* align-items: center; */
 }
 .parks-list {
   margin: 0 0 19.95px;
@@ -446,6 +485,8 @@ th {
   font-size: 16px;
   margin: 0;
   list-style-type: none;
+  cursor: pointer;
+  background-color: #fff;
 }
 .parks-list__item .parks-list__item {
   background-color: rgba(0, 0, 0, 0.1);
@@ -471,6 +512,7 @@ th {
 .parks-search {
   box-sizing: border-box;
   padding: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 .parks-search__input {
   box-sizing: border-box !important;
